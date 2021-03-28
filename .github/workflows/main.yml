@@ -23,6 +23,7 @@ jobs:
     - name: Fetch posts
       run: |
         git clone https://${{secrets.UPLOAD_TOKEN}}@github.com/gyj1109/Blog-Posts.git source/_posts
+        rm -rf source/_posts/.git*
     - name: Install npm packages
       run: |
         npm install -g hexo-cli
