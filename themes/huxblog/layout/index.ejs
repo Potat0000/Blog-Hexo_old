@@ -1,0 +1,60 @@
+---
+layout: page
+---
+<!-- Main Content -->
+<div id="main">
+    <% page.posts.each(function(post){ %>
+    <div class="post-preview">
+
+        <a href="<%- config.root %><%- post.path %>">
+            <h2 class="post-title">
+                <%  if (post.top == true){ %>
+                <i class="glyphicon glyphicon-circle-arrow-up"
+                    style="display:table-cell;vertical-align:middle;top:0;padding-right:3px"></i>
+                <% } %>
+                <%- post.title || "Untitled" %>
+            </h2>
+            <h3 class="post-subtitle">
+                <%- post.subtitle || "" %>
+            </h3>
+            <div class="post-content-preview">
+                <% if (post.lock == true){ %>
+                加密文章，请输入Yubico OTP后查看。</br>
+                The article has been encrypted, please enter Yubico OTP to view.
+                <% } else { %>
+                <%- truncate(post.content.replace(/<script[\s\S]+<\/script>/gm,"").replace(/<[^>]+>/g," ").replace(/\s+/g, ' '), {length: 300, omission: ' ......'}) %>
+                <% } %>
+            </div>
+        </a>
+        <div class="sidebar-container" style="padding:5px 0px;margin-top:5px">
+            <section>
+                <div class="tags">
+                    <% post.tags.forEach(function(tag){ %>
+                    <a href="<%= config.root %>tags/#<%= tag.name %>"><%= tag.name %></a>
+                    <% }) %>
+                </div>
+            </section>
+        </div>
+        <p class="post-meta" style="margin-bottom: 10px;">
+            Posted by <%- post.author || config.author %> on
+            <%= post.date.format(config.date_format) %>
+        </p>
+    </div>
+    <hr>
+    <% }); %>
+</div>
+
+<!-- Pager -->
+
+<ul class="pager">
+    <% if (page.prev){ %>
+    <li class="previous">
+        <a href="<%- config.root %><%- page.prev_link %>">&larr; Newer Posts</a>
+    </li>
+    <% } %>
+    <% if (page.next){ %>
+    <li class="next">
+        <a href="<%- config.root %><%- page.next_link %>">Older Posts &rarr;</a>
+    </li>
+    <% } %>
+</ul>

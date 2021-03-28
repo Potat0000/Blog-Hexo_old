@@ -1,0 +1,59 @@
+name: Auto build blog
+on:
+  push:
+    branches:
+      - master
+  repository_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@main
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - name: Set up Node.js
+      uses: actions/setup-node@main
+      with:
+        node-version: '10.x'
+    - name: Check out code
+      uses: actions/checkout@main
+    - name: Fetch posts
+      run: |
+        git clone https://${{secrets.UPLOAD_TOKEN}}@github.com/gyj1109/Blog-Posts.git source/_posts
+    - name: Install npm packages
+      run: |
+        npm install -g hexo-cli
+        npm install
+        npm update
+    - name: Apply custom patches
+      run: |
+        cp plugins/hexo-blog-encrypt/index.js node_modules/hexo-blog-encrypt/index.js
+        cp plugins/hexo-generator-search/search.xml node_modules/hexo-generator-search/templates/search.xml
+        cp plugins/hexo-github/index.js node_modules/hexo-github/index.js
+        cp plugins/hexo-github/tag.html node_modules/hexo-github/tag.html
+        cp plugins/hexo-filter-flowchart/index.js node_modules/hexo-filter-flowchart/index.js
+        cp plugins/hexo-filter-flowchart/renderer.js node_modules/hexo-filter-flowchart/lib/renderer.js
+    - name: Generate password file
+      run: |
+        touch passwd
+        echo ${{secrets.Yubico_OTP}}>passwd
+    - name: Build
+      run: |
+        python3 img-amp.py
+        hexo g
+    - name: Config git
+      run: |
+        git config --global user.name "Actions"
+        git config --global user.email "actions@github.com"
+    - name: Clean up
+      run: rm -rf ./public/amp
+    - name: Push to Github
+      run: |
+        cd ./public
+        git init
+        git add .
+        git commit -m "GitHub Pages"
+        git push --force "https://${{secrets.UPLOAD_TOKEN}}@github.com/gyj1109/Blog.git" master:gh-pages

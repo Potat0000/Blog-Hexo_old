@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  {% if posts %}
+    {% for post in posts.toArray() %}
+    <entry>
+        <title>{{ post.title }}</title>
+        <url>{{ (url + post.path) | uriencode }}</url>
+        <content type="html">
+            {% if not post.lock %}<![CDATA[{{ post.content | noControlChars | safe }}]]>{% endif %}
+        </content>
+        <time>{{ post.date.format("YYYY-MM-DD") }}</time>
+    </entry>
+    {% endfor %}
+  {% endif %}
+</search>
