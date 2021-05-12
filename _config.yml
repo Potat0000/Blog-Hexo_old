@@ -26,7 +26,7 @@ keyword: ""
 
 # SNS settings
 # RSS: false
-weibo_username:     1889724062          # input your Weibo UUID
+#weibo_username:               # input your Weibo UUID
 zhihu_username:     gyj1109
 github_username:    gyj1109
 twitter_username:   gyj1109
@@ -56,7 +56,7 @@ anchorjs: false                          # if you want to customize anchor. chec
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "写写代码，做做设计，看看产品。世界那么大，我想去看看。"
+sidebar-about-description: "Vidar Team | Reverse | Misc"
 sidebar-avatar: img/avatar-gyj1109.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -68,12 +68,20 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "云游君的小站",
-        href: "https://wr-web.github.io/"
-    },
-    {
         title: "cj的小站",
         href: "https://cjovi.icu/"
+    },
+    {
+        title: "Summer's personal blog",
+        href: "https://blog.m1dsummer.top/"
+    },
+    {
+        title: "0wl's Blog",
+        href: "https://0wl-alt.github.io/"
+    },
+    {
+        title: "云游君的小站",
+        href: "https://wr-web.github.io/"
     }
 ]
 
