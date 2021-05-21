@@ -50,8 +50,8 @@ anchorjs: false                          # if you want to customize anchor. chec
 # Baidu Analytics
 #ba_track_id:
 # Google Analytics
-#ga_track_id: 'UA-91573622-1'
-#ga_domain: gyj1109.top
+ga_track_id: 'UA-91573622-1'
+ga_domain: gyj1109.top
 
 
 # Sidebar settings
