@@ -111,9 +111,12 @@ relative_link: false
 future: true
 highlight:
   enable: false
+prismjs:
+  enable: false
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'base16-ateliersulphurpool.light'
   line_number: true
-# auto_detect: true
-  tab_replace: true
 
 # Category & Tag
 default_category: uncategorized
@@ -141,22 +144,23 @@ plugins:
   - hexo
   - hexo-blog-encrypt
   - hexo-filter-flowchart
+  - hexo-footnotes
+  - hexo-generator-amp
   - hexo-generator-archive
   - hexo-generator-baidu-sitemap
   - hexo-generator-category
-  - hexo-generator-index
   - hexo-generator-index-pin-top
+  - hexo-generator-index
   - hexo-generator-search
   - hexo-generator-sitemap
   - hexo-generator-tag
   - hexo-github
-  - hexo-generator-amp
   - hexo-neat
+  - hexo-prism-plugin
   - hexo-renderer-ejs
   - hexo-renderer-kramed
   - hexo-renderer-marked
   - hexo-renderer-stylus
-  - hexo-footnotes
   - hexo-server
 
 neat_enable: true
