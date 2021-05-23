@@ -15,30 +15,6 @@
     <script>
         document.getElementById("title1").innerHTML="<%= page.title || config.title %>";
         document.getElementById("title2").innerHTML="<%= page.description || config.subtitle || "" %>";
-        <% if (is_post() && config.generator_amp) { %>
-            document.getElementById("title2").onselectstart=function() {
-                return false;
-            };
-            document.getElementById("title2").ondblclick=function() {
-                window.location.href='amp/';
-            };
-            var linkTag = document.createElement('link');
-            linkTag.id = "amp-link";
-            linkTag.href = "amp/";
-            linkTag.setAttribute('rel','amphtml');
-            document.getElementsByTagName('head')[0].appendChild(linkTag);
-        <% } else { %>
-            document.getElementById("title2").onselectstart=function() {
-                return true;
-            };
-            document.getElementById("title2").ondblclick=function() {
-                return true;
-            };
-            var linkTag;
-            if (linkTag=document.getElementById("amp-link")){
-                document.getElementsByTagName('head')[0].removeChild(linkTag);
-            }
-        <% } %>
     </script>
     <%- body %>
     </div>

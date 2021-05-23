@@ -10,4 +10,3 @@ Disallow: /pages/
 Disallow: /tags/
 
 Sitemap: https://gyj1109.top/sitemap.xml
-Sitemap: https://gyj1109.top/baidusitemap.xml

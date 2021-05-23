@@ -1,6 +1,6 @@
 ---
 layout: "tags"
 title: "Tags"
-description: "Hey, this is Tags."
+description: "Hey! This is Tags."
 sitemap: false
 ---

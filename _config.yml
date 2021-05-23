@@ -115,7 +115,7 @@ prismjs:
   enable: false
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
-  theme: 'base16-ateliersulphurpool.light'
+  theme: 'prism-material-light'
   line_number: true
 
 # Category & Tag
@@ -142,12 +142,9 @@ theme: huxblog
 
 plugins:
   - hexo
-  - hexo-blog-encrypt
   - hexo-filter-flowchart
   - hexo-footnotes
-  - hexo-generator-amp
   - hexo-generator-archive
-  - hexo-generator-baidu-sitemap
   - hexo-generator-category
   - hexo-generator-index-pin-top
   - hexo-generator-index
@@ -161,7 +158,6 @@ plugins:
   - hexo-renderer-kramed
   - hexo-renderer-marked
   - hexo-renderer-stylus
-  - hexo-server
 
 neat_enable: true
 neat_html:
@@ -198,22 +194,9 @@ search:
   path: search.xml
   field: post
 
-generator_amp:
-  templateDir:  amp
-  assetDistDir: amp
-  templateFilePath: amp.ejs
-  logo:
-    path:   nothing.png
-    width:  1
-    height: 1
-  substituteTitleImage:
-    path:   nothing.png
-    width:  1000
-    height: 1000
-  html_minifier: true
-  warningLog: false
-  validateAMP: false
-
-encrypt:
-  enable: true
-  pwdfile: passwd
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap.xml
+  rel: true
+  tags: false
+  categories: false

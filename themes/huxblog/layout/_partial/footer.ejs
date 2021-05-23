@@ -141,7 +141,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/adrai/flowchart.js@1.13.0/release/flowchart.min.js"></script>
-<script src="/js/pinchzoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js"></script>
 
 <!-- jquery.pjax.js -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
@@ -279,7 +279,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if ($('#tag_cloud').length !== 0) {
-        async("<%= config.root%>js/jquery.tagcloud.js", function () {
+        async("https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/jquery.tagcloud.js", function () {
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: { start: '#80CBC4', end: '#00695C' }
@@ -383,7 +383,6 @@
 <% } %>
 
 <script>
-    async("<%= config.root%>js/jquery.tagcloud.js");
+    async("https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/jquery.tagcloud.js");
     async("https://cdn.jsdelivr.net/gh/davist11/jQuery-One-Page-Nav@3.0.0/jquery.nav.min.js");
-    async("<%= config.root%>js/badge.js");
 </script>

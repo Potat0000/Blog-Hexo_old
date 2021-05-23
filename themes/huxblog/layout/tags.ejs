@@ -16,7 +16,7 @@ layout: layout
                 <% site.tags.map(function(tag){  %>
                 <div class="one-tag-list">
                     <span class="fa fa-tag listing-seperator" id="<%= tag.name %>" style="padding-top:15px;margin-top:-15px">
-                        <span class="tag-text" ondblclick="window.location.href='<%- config.root %>tags/amp/#<%= tag.name %>'" onselectstart="return false"><%= tag.name %></span>
+                        <span class="tag-text" onselectstart="return false"><%= tag.name %></span>
                     </span>
                     <% tag.posts.map(function(post){  %>
                     <!-- <li class="listing-item">
@@ -48,12 +48,4 @@ layout: layout
     document.getElementById("title2").onselectstart=function() {
         return false;
     };
-    document.getElementById("title2").ondblclick=function() {
-        window.location.href='amp/';
-    };
-    var linkTag = document.createElement('link');
-    linkTag.id = "amp-link";
-    linkTag.href = "amp/";
-    linkTag.setAttribute('rel','amphtml');
-    document.getElementsByTagName('head')[0].appendChild(linkTag);
 </script>

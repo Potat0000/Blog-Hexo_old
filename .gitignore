@@ -6,6 +6,5 @@ node_modules/
 public/
 .deploy*/
 /passwd
-source/amp/
 .vscode/
 /package-lock.json

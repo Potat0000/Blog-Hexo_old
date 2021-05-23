@@ -18,12 +18,7 @@ layout: page
                 <%- post.subtitle || "" %>
             </h3>
             <div class="post-content-preview">
-                <% if (post.lock == true){ %>
-                加密文章，请输入Yubico OTP后查看。</br>
-                The article has been encrypted, please enter Yubico OTP to view.
-                <% } else { %>
                 <%- truncate(post.content.replace(/<script[\s\S]+<\/script>/gm,"").replace(/<[^>]+>/g," ").replace(/\s+/g, ' '), {length: 300, omission: ' ......'}) %>
-                <% } %>
             </div>
         </a>
         <div class="sidebar-container" style="padding:5px 0px;margin-top:5px">
