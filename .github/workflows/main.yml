@@ -26,11 +26,7 @@ jobs:
         npm update
     - name: Apply custom patches
       run: |
-        cp plugins/hexo-filter-flowchart/index.js node_modules/hexo-filter-flowchart/index.js
-        cp plugins/hexo-filter-flowchart/renderer.js node_modules/hexo-filter-flowchart/lib/renderer.js
         cp plugins/hexo-generator-search/search.xml node_modules/hexo-generator-search/templates/search.xml
-        cp plugins/hexo-github/index.js node_modules/hexo-github/index.js
-        cp plugins/hexo-github/tag.html node_modules/hexo-github/tag.html
         cp plugins/hexo-prism-plugin/index.js node_modules/hexo-prism-plugin/src/index.js
     - name: Build
       run: |

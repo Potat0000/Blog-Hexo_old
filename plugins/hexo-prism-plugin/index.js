@@ -86,16 +86,16 @@ function PrismPlugin(data) {
 function importAssets(code, data) {
   const js = [];
   const css = [
-    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PrismJS/prism-themes/themes/${prismThemeName}.min.css" type="text/css">`
+    `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PrismJS/prism-themes/themes/${prismThemeName}.min.css" type="text/css" media="none" onload="this.media='all'">`
   ];
 
   if (line_number && custom_css === null) {
-    css.push(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.css" type="text/css">`);
+    css.push(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.css" type="text/css" media="none" onload="this.media='all'">`);
   }
   if (mode === 'realtime') {
-    js.push(`<script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>`);
+    js.push(`<script>async("https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js");</script>`);
     if (line_number) {
-      js.push(`<script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>`);
+      js.push(`<script>async("https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js");</script>`);
     }
   }
   const imports = css.join('\n') + js.join('\n');

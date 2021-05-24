@@ -103,9 +103,6 @@
 <!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
-
 <!-- Custom Theme JavaScript -->
 <%- js('js/hux-blog.js') %>
 
@@ -122,26 +119,6 @@
     }
 </script>
 
-<!--
-     Because of the native support for backtick-style fenced code blocks
-     right within the Markdown is landed in Github Pages,
-     From V1.6, There is no need for Highlight.js,
-     so Huxblog drops it officially.
-
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
-
-
-<script>
-    async("https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js", function () {
-        hljs.initHighlightingOnLoad();
-    })
-</script>
-<link href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js" rel="stylesheet">-->
-
-<script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/adrai/flowchart.js@1.13.0/release/flowchart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js"></script>
 
 <!-- jquery.pjax.js -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
@@ -383,6 +360,23 @@
 <% } %>
 
 <script>
+    async("https://cdn.jsdelivr.net/npm/trianglify@2.0.0/dist/trianglify.min.js", function () {
+        var pattern = Trianglify({width: document.body.clientWidth * 1.2, height: document.body.clientWidth * 0.9, cell_size: Math.round(Math.random()*40) + 40, x_colors: 'random'});
+        document.getElementsByTagName("header")[0].style["background-image"] = 'url(' + pattern.png() + ')';
+        async("https://cdn.jsdelivr.net/npm/colorthief@2.3.0/dist/color-thief.min.js", function () {
+            var colorThief = new ColorThief();
+            var rgb = colorThief.getColor(pattern.canvas());
+            var hex = "#" + (((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1));
+            var metaThemeColor = document.querySelector("meta[name=theme-color]");
+            metaThemeColor.setAttribute("content", hex);
+        });
+    });
+</script>
+
+<script>
+    async("https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js");
     async("https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/jquery.tagcloud.js");
     async("https://cdn.jsdelivr.net/gh/davist11/jQuery-One-Page-Nav@3.0.0/jquery.nav.min.js");
+    async("https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js");
+    async("https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js");
 </script>

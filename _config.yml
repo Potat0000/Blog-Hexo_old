@@ -142,7 +142,6 @@ theme: huxblog
 
 plugins:
   - hexo
-  - hexo-filter-flowchart
   - hexo-footnotes
   - hexo-generator-archive
   - hexo-generator-category
@@ -151,7 +150,6 @@ plugins:
   - hexo-generator-search
   - hexo-generator-sitemap
   - hexo-generator-tag
-  - hexo-github
   - hexo-neat
   - hexo-prism-plugin
   - hexo-renderer-ejs
