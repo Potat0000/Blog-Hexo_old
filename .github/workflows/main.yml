@@ -24,12 +24,9 @@ jobs:
         npm install -g hexo-cli
         npm install
         npm update
-    - name: Apply custom patches
-      run: |
-        cp plugins/hexo-generator-search/search.xml node_modules/hexo-generator-search/templates/search.xml
-        cp plugins/hexo-prism-plugin/index.js node_modules/hexo-prism-plugin/src/index.js
     - name: Build
       run: |
+        cp search.xml node_modules/hexo-generator-search/templates/search.xml
         hexo g
     - name: Config git
       run: |

@@ -11,7 +11,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'https://yoursite.com/child' and root as '/child/'
-url: https://gyj1109.top
+url: 'https://gyj1109.top'
 permalink: archives/:year:month:day/:title/
 permalink_defaults:
 
@@ -34,8 +34,6 @@ twitter_username:   gyj1109
 #linkedin_username:
 
 # Build settings
-anchorjs: false                          # if you want to customize anchor. check out line:181 of `post.html`
-
 
 # Disqus settings
 #disqus_username:
@@ -103,7 +101,7 @@ skip_render:
 new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link.enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -112,11 +110,10 @@ future: true
 highlight:
   enable: false
 prismjs:
-  enable: false
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'prism-material-light'
+  enable: true
+  preprocess: true
   line_number: true
+  tab_replace: '    '
 
 # Category & Tag
 default_category: uncategorized
@@ -142,7 +139,8 @@ theme: huxblog
 
 plugins:
   - hexo
-  - hexo-footnotes
+  - hexo-all-minifier
+  - hexo-asset-image-for-hexo5
   - hexo-generator-archive
   - hexo-generator-category
   - hexo-generator-index-pin-top
@@ -151,43 +149,61 @@ plugins:
   - hexo-generator-sitemap
   - hexo-generator-tag
   - hexo-lazyload-image
-  - hexo-neat
-  - hexo-prism-plugin
   - hexo-renderer-ejs
-  - hexo-renderer-kramed
-  - hexo-renderer-marked
+  - hexo-renderer-markdown-it
   - hexo-renderer-stylus
 
-neat_enable: true
-neat_html:
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-cjk-breaks
+    - markdown-it-container
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: anchorjs-link
+    permalinkSymbol: ¶
+
+js_concator:
+  enable: false
+  bundle_path: '/js/bundle.js'
+  front: false
+  silent: false
+html_minifier:
   enable: true
-  exclude:
-neat_css:
+  ignore_error: false
+  silent: false
+css_minifier:
   enable: true
+  silent: false
   exclude:
     - '*.min.css'
-    - '**.min.css'
-    - '**/*.min.css'
-    - '**\*.min.css'
-neat_js:
+js_minifier:
   enable: true
   mangle: true
-  output:
-  compress:
+  silent: false
   exclude:
     - '*.min.js'
-    - '**.min.js'
-    - '**/*.min.js'
-    - '**\*.min.js'
-
-marked:
-  gfm: true
-  pedantic: false
-  sanitize: false
-  tables: true
-  breaks: true
-  smartLists: true
-  smartypants: true
+image_minifier:
+  enable: false
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false
+  silent: false
 
 search:
   path: search.xml

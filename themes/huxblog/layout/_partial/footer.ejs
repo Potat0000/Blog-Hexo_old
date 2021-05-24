@@ -103,10 +103,6 @@
 <!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<%- js('js/hux-blog.js') %>
-
-
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -278,22 +274,13 @@
 <!-- Google Analytics -->
 
 <% if (config.ga_track_id) { %>
+
 <script>
-    // dynamic User by Hux
-    var _gaId = '<%= config.ga_track_id %>';
-    var _gaDomain = '<%= config.ga_domain %>';
-
-    // Originial
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', _gaId, _gaDomain);
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', '<%= config.ga_track_id %>', 'auto');
     ga('send', 'pageview');
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 <% } %>
 
@@ -361,22 +348,24 @@
 
 <script>
     async("https://cdn.jsdelivr.net/npm/trianglify@2.0.0/dist/trianglify.min.js", function () {
-        var pattern = Trianglify({width: document.body.clientWidth * 1.2, height: document.body.clientWidth * 0.9, cell_size: Math.round(Math.random()*40) + 40, x_colors: 'random'});
-        document.getElementsByTagName("header")[0].style["background-image"] = 'url(' + pattern.png() + ')';
-        async("https://cdn.jsdelivr.net/npm/colorthief@2.3.0/dist/color-thief.min.js", function () {
-            var colorThief = new ColorThief();
-            var rgb = colorThief.getColor(pattern.canvas());
-            var hex = "#" + (((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1));
-            var metaThemeColor = document.querySelector("meta[name=theme-color]");
-            metaThemeColor.setAttribute("content", hex);
-        });
+        targetItem=document.getElementsByTagName("header")[0]
+        if (targetItem.id != "404-intro-header") {
+            var pattern = Trianglify({width: document.body.clientWidth * 1.2, height: document.body.clientWidth * 0.9, cell_size: Math.round(Math.random()*40) + 40, x_colors: 'random'});
+            targetItem.style["background-image"] = 'url(' + pattern.png() + ')';
+            async("https://cdn.jsdelivr.net/npm/colorthief@2.3.0/dist/color-thief.min.js", function () {
+                var colorThief = new ColorThief();
+                var rgb = colorThief.getColor(pattern.canvas());
+                var hex = "#" + (((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1));
+                var metaThemeColor = document.querySelector("meta[name=theme-color]");
+                metaThemeColor.setAttribute("content", hex);
+            });
+        }
     });
 </script>
 
-<script>
-    async("https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js");
-    async("https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/jquery.tagcloud.js");
-    async("https://cdn.jsdelivr.net/gh/davist11/jQuery-One-Page-Nav@3.0.0/jquery.nav.min.js");
-    async("https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js");
-    async("https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js");
-</script>
+<script async src="https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/hux-blog.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/gyj1109/Blog/themes/huxblog/source/js/jquery.tagcloud.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/davist11/jQuery-One-Page-Nav@3.0.0/jquery.nav.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>

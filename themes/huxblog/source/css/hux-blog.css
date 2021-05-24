@@ -1088,3 +1088,12 @@ img::-moz-selection {
 #main > *:first-child {
   margin-top: 30px;
 }
+
+@media all and (min-width: 800px) {
+  .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+  }
+}
