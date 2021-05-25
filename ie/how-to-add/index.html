@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<title>低版本 Internet Explorer 淘汰行动</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+
+<!-- Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/favicon-16x16.png">
+<link rel="manifest" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/manifest.json">
+<link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/safari-pinned-tab.svg" color="#009688">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/favicon.ico" type="image/x-icon" />
+<meta name="msapplication-TileColor" content="#009688">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/mstile-144x144.png">
+<meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/gyj1109/Blog-Resources@latest/icons/how-to-add/browserconfig.xml">
+<meta name="theme-color" content="#f9f9f9">
+<!-- Icon -->
+
+<style type="text/css">
+/* Eric Meyer's Reset CSS v2.0 - https://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+a{text-decoration:none;color:#0072c6;}a:hover{text-decoration:none;color:#004d8c;}
+body{background:#f9f9f9;margin:0;padding:0;font-size:14px;line-height:24px;color:#454545;font-family:'Microsoft YaHei UI','Microsoft YaHei',DengXian,SimSun,'Segoe UI',Tahoma,Helvetica,sans-serif;overflow-y:scroll}
+h1{font-size:40px;line-height:55px;font-weight:100;margin-bottom:20px;margin-top:15px;}
+h2{font-size:20px;line-height:25px;font-weight:100;margin:10px 0;}
+p{margin-bottom:10px;}
+hr{margin:20px 0;border:0;border-top:1px solid #dadada}
+code{padding: 2px 4px;font-size: 95%;color: #c7254e;background-color: #f9f2f4;border-radius: 4px;}
+ul{padding:0 1em;}
+ul li{list-style-type:disc;list-style-position:inside;}
+#page {max-width:960px;margin:0 auto;padding:10px;letter-spacing:0.05em}
+</style>
+</head>
+<body><div id="page">
+<h1>低版本 Internet Explorer 淘汰行动 </h1>
+<p>请不再为IE早期版本编写兼容代码，当使用 Internet Explorer 的早期版本（IE11以下版本 或使用该内核的浏览器）的用户访问时提示浏览器升级。</p>
+<hr>
+<h2>原因</h2>
+<p>自 2016 年 1 月 12 日起，Microsoft 不再为 IE 11 以下版本提供相应支持和更新。没有关键的浏览器安全更新，您的 PC 可能易受有害病毒、间谍软件和其他恶意软件的攻击，它们可以窃取或损害您的业务数据和信息。请参阅 <a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support">微软对 Internet Explorer 早期版本的支持将于 2016 年 1 月 12 日结束的说明</a> 。</p>
+<hr>
+<h2>代码</h2>
+<p>把这段代码添加在网站头部代码<code>&lt;/head&gt;</code>之前，当IE11以下版本浏览器（包括使用IE11以下版本内核的浏览器）访问网站的时候将自动跳转到浏览器升级提示页面。提示页面可点击“<a href="/ie/">IE浏览器升级提示页</a>”预览。</p>
+<p><code>&lt;!--[if lte IE 10]&gt;&lt;script&gt;window.location.href='https://gyj1109.top/ie/';&lt;/script&gt;&lt;![endif]--&gt;</code></p>
+<p>网站在没有兼容的低版本IE中往往都是错版，所以检测到是低版本IE时直接跳转到升级页面，节省了不必要的资源加载，降低了网站服务器开销。去除冗余字符之后，便有了这段简洁优雅的代码。</p>
+<hr>
+<h2>呼吁</h2>
+<p>为了兼容这个曾经的浏览器霸主，网页设计人员需要做大量的代码工作，而且最终效果也始终不能让人满意。对于普通用户而言，低版本IE更是一个岌岌可危的安全隐患，在Windows历史上几次大的木马病毒事件都是利用IE漏洞进行传播。所以，请和我们一起抵制IE6、IE7、IE8、IE9、IE10！</p>
+<hr>
+<h2>更多</h2>
+<p><a href="https://jingyan.baidu.com/article/046a7b3eb6da10f9c37fa941.html" target="_blank" rel="noopener">使用 if IE 语句给网站添加IE升级提示</a></p>
+
+</div>
+</body></html>
