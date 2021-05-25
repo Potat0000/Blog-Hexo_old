@@ -9,29 +9,39 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Set up Python
+      uses: actions/setup-python@main
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
     - name: Set up Node.js
       uses: actions/setup-node@main
       with:
         node-version: '10.x'
     - name: Check out code
       uses: actions/checkout@main
-    - name: Fetch posts
+    - name: Fetch Posts
       run: |
         git clone https://${{secrets.UPLOAD_TOKEN}}@github.com/gyj1109/Blog-Posts.git source/_posts
         rm -rf source/_posts/.git*
-    - name: Install npm packages
+    - name: Install NPM packages
       run: |
         npm install -g hexo-cli
         npm install
         npm update
-    - name: Build
-      run: |
-        cp search.xml node_modules/hexo-generator-search/templates/search.xml
-        hexo g
-    - name: Config git
+    - name: Config Git
       run: |
         git config --global user.name "Actions"
         git config --global user.email "actions@github.com"
+    - name: Build
+      env:
+        UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
+      run: |
+        cp search.xml node_modules/hexo-generator-search/templates/search.xml
+        hexo g
+    - name: Remove useless Post Resources
+      run: |
+        python3 del.py
     - name: Push to Github
       run: |
         cd ./public

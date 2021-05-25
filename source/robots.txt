@@ -8,5 +8,6 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /pages/
 Disallow: /tags/
+Disallow: /search/
 
 Sitemap: https://gyj1109.top/sitemap.xml
