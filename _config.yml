@@ -147,7 +147,6 @@ plugins:
   - hexo-generator-search
   - hexo-generator-sitemap
   - hexo-generator-tag
-  - hexo-lazyload-image
   - hexo-renderer-ejs
   - hexo-renderer-markdown-it
   - hexo-renderer-stylus
@@ -230,8 +229,3 @@ sitemap:
   rel: true
   tags: false
   categories: false
-
-lazyload:
-  enable: true
-  onlypost: true
-  isSPA: true
